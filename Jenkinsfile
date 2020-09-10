@@ -6,7 +6,12 @@ pipeline {
                 sh 'mvn clean package'
         }
         }
-        
+        stage('SonarQube') {
+            steps {
+                withSonarQubeEnv('sonar-way')
+                { sh 'mvn sonar:sonar' }
+            }
+        }
         stage('push to jfrog') { 
              steps {
                 rtUpload (
@@ -15,7 +20,7 @@ pipeline {
                     "files": [
                 {
                 "pattern": "target/*.war",
-                "target": "jave_app/"
+                "target": "java_app/"
                 }
          ]
     }''',
