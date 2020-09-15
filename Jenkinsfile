@@ -15,14 +15,21 @@ registryCredential = 'docker'
        
        stage ('dockerization') {
            agent any
-            steps {
-                sh '''
-                 docker.withRegistry( '', registryCredential )
-                  docker build -t nainikapanguluri/java_app .
-                  docker push nainikapanguluri/java_app
-                  
-                 '''
-                    }
+            steps{
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+       stage('Deploy Image') {
+  steps{
+    script {
+      docker.withRegistry( '', registryCredential ) {
+        dockerImage.push()
+      }
+    }
+  }
+}    
+                
              }
         }
         
