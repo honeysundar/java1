@@ -2,7 +2,7 @@ pipeline {
     environment {
 registry = "nainikapanguluri/java_app"
 registryCredential = 'docker'
-
+dockerImage = ''
 }
     agent none
     stages {
@@ -17,7 +17,7 @@ registryCredential = 'docker'
            agent any
             steps{
               script {
-              docker.build registry + ":$BUILD_NUMBER"
+              dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
                  }
        }
