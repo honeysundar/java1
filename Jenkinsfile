@@ -1,4 +1,9 @@
 pipeline {
+    environment {
+
+registryCredential = 'docker'
+
+}
     agent none
     stages {
         stage('Build') { 
@@ -12,7 +17,7 @@ pipeline {
            agent any
             steps {
                 sh '''
-                docker login -u nainikapanguluri -p NPnp1126$$$
+                 docker.withRegistry( '', registryCredential )
                   docker build -t nainikapanguluri/java_app .
                   docker push nainikapanguluri/java_app
                   
