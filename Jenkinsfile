@@ -7,15 +7,16 @@ pipeline {
                 sh 'mvn clean package'
         }
         }
-       stage('SonarQube analysis') { 
+       
+       stage ('dockerization') {
            agent any
-             steps {
-                withSonarQubeEnv('sonar-way') { 
-                sh 'mvn sonar:sonar'
-                }
-        }
-        }
-        
+            steps {
+                sh '''
+                  docker build -t nainikapanguluri/java_app .
+                  docker push nainikapanguluri/java_app
+                 '''
+                    }
+             }
         }
         
     }
