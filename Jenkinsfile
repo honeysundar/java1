@@ -26,7 +26,7 @@ dockerImage = ''
           steps{
           script {
              docker.withRegistry( '', registryCredential ) {
-                docker push nainikapanguluri/java_app1
+                dockerImage.push()
       }
     }
   }
