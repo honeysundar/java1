@@ -9,7 +9,7 @@ dockerImage = ''
         stage('Build') { 
             agent any
              steps {
-                sh 'mvn clean package'
+                sh 'mvn install'
             }
             }
        
