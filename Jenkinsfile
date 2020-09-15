@@ -1,7 +1,7 @@
 pipeline {
     environment {
 registry = "nainikapanguluri/java_app"
-registryCredential = 'docker'
+registryCredential = 'dockerimage'
 dockerImage = ''
 }
     agent none
