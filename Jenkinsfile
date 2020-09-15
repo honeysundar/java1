@@ -8,9 +8,7 @@ pipeline {
         }
         }
        stage('SonarQube analysis') { 
-           agent { 
-                label 'worker-linux'
-            }
+           agent any
              steps {
                 withSonarQubeEnv('sonar-way') { 
                 sh 'mvn sonar:sonar'
