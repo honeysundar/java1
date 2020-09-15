@@ -1,6 +1,6 @@
 pipeline {
     environment {
-registry = "nainikapanguluri/java_app"
+registry = "nainikapanguluri/java_app1"
 registryCredential = 'dockerimage'
 dockerImage = ''
 }
@@ -26,7 +26,7 @@ dockerImage = ''
           steps{
           script {
              docker.withRegistry( '', registryCredential ) {
-                dockerImage.push()
+                docker push nainikapanguluri/java_app1
       }
     }
   }
