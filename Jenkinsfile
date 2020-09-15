@@ -10,27 +10,29 @@ registryCredential = 'docker'
             agent any
              steps {
                 sh 'mvn clean package'
-        }
-        }
+            }
+            }
        
        stage ('dockerization') {
            agent any
             steps{
-        script {
-          docker.build registry + ":$BUILD_NUMBER"
-        }
-      }
+              script {
+              docker.build registry + ":$BUILD_NUMBER"
+                }
+                 }
+       }
        stage('Deploy Image') {
-  steps{
-    script {
-      docker.withRegistry( '', registryCredential ) {
-        dockerImage.push()
+           agent any
+          steps{
+          script {
+             docker.withRegistry( '', registryCredential ) {
+                dockerImage.push()
       }
     }
   }
 }    
                 
-             }
+             
         }
         
     }
