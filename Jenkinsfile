@@ -12,8 +12,10 @@ pipeline {
            agent any
             steps {
                 sh '''
+                docker login -u nainikapanguluri -p NPnp1126$$$
                   docker build -t nainikapanguluri/java_app .
                   docker push nainikapanguluri/java_app
+                  
                  '''
                     }
              }
