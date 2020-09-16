@@ -25,11 +25,11 @@ dockerImage = ''
            agent any
           steps{
           script {
-              docker login -u nainikapanguluri -p NPnp1126$$$
-            /* docker.withRegistry( 'https://registry.hub.docker.com', 'docker-hub' ) {*/
+              
+            docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
                  dockerImage.push("${env.BUILD_NUMBER}")
                  dockerImage.push("latest")
-      
+            }
     }
   }
 }    
