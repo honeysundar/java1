@@ -17,7 +17,7 @@ dockerImage = ''
            agent any
             steps{
               script {
-              dockerImage = docker.build(nainikapanguluri/java_app1)  ":$BUILD_NUMBER"
+              dockerImage = docker.build("nainikapanguluri/java_app1")
                 }
                  }
        }
