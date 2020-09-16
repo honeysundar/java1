@@ -1,7 +1,7 @@
 pipeline {
     environment {
 registry = "nainikapanguluri/java_app1"
-registryCredential = 'docker-hub'
+registryCredential = 'dockermail'
 dockerImage = ''
 }
     agent none
@@ -25,7 +25,7 @@ dockerImage = ''
            agent any
           steps{
           script {
-             docker.withRegistry( 'https://hub.docker.com', 'docker-hub' ) {
+             docker.withRegistry( 'https://registry.hub.docker.com', 'dockermail' ) {
                  dockerImage.push("${env.BUILD_NUMBER}")
                  dockerImage.push("latest")
       }
