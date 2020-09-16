@@ -25,7 +25,7 @@ dockerImage = ''
            agent any
           steps{
           script {
-             docker.withRegistry( 'https://registry.hub.docker.com', 'docker-hub' ) {
+             docker.withRegistry( 'https://hub.docker.com', 'docker-hub' ) {
                  dockerImage.push("${env.BUILD_NUMBER}")
                  dockerImage.push("latest")
       }
