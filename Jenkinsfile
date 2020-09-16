@@ -17,7 +17,7 @@ dockerImage = ''
            agent any
             steps{
               script {
-              dockerImage = docker.build registry + ":$BUILD_NUMBER"
+              dockerImage = docker.build(nainikapanguluri/java_app1)  ":$BUILD_NUMBER"
                 }
                  }
        }
@@ -25,8 +25,9 @@ dockerImage = ''
            agent any
           steps{
           script {
-             docker.withRegistry( '', registryCredential ) {
-                dockerImage.push()
+             docker.withRegistry( 'https://registry.hub.docker.com', 'dockerimage' ) {
+                 dockerImage.push("${env.BUILD_NUMBER}")
+                 dockerImage.push("latest")
       }
     }
   }
